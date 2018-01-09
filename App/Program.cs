@@ -9,7 +9,9 @@ namespace App
         {
             Console.WriteLine($"The answer is {new Thing().Get(42)}.");
             Console.WriteLine("Hello World!");
-            Console.ReadKey();
+            Console.WriteLine("This line is from the ubuntu client");
+	    Console.ReadKey();
+
         }
     }
 }
