@@ -42,7 +42,7 @@ namespace Web
 
             app.UseStaticFiles(new StaticFileOptions()
             {
-                FileProvider = new PhysicalFileProvider(@"/var/www/netcore/wwwrot")
+                FileProvider = new PhysicalFileProvider(@"/var/www/netcore/wwwroot")
                     //Path.Combine(Directory.GetCurrentDirectory(), @"/wwwroot"))
                 //RequestPath = new PathString("/")
                 //OnPrepareResponse = ctx =>
