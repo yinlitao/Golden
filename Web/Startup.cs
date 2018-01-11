@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -37,7 +38,14 @@ namespace Web
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                OnPrepareResponse = ctx =>
+                    {
+                        ctx.Context.Response.Headers.Append(new KeyValuePair<string, Microsoft.Extensions.Primitives.StringValues>("cur-directory", Directory.GetCurrentDirectory().ToString()));
+                        //ctx.Context.Response.Headers.Append("Cache-Control", "public,max-age=600");
+                    }
+            });
 
             app.UseMvc(routes =>
             {
