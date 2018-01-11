@@ -5,8 +5,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 
 namespace Web
 {
@@ -40,11 +42,18 @@ namespace Web
 
             app.UseStaticFiles(new StaticFileOptions()
             {
-                OnPrepareResponse = ctx =>
-                    {
-                        ctx.Context.Response.Headers.Append(new KeyValuePair<string, Microsoft.Extensions.Primitives.StringValues>("cur-directory", Directory.GetCurrentDirectory().ToString()));
-                        //ctx.Context.Response.Headers.Append("Cache-Control", "public,max-age=600");
-                    }
+                FileProvider = new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot"))
+                //RequestPath = new PathString("/")
+                //OnPrepareResponse = ctx =>
+                //      {
+                //          var d = Directory.GetCurrentDirectory().ToString();
+
+                //          //ctx.Context.Response.Headers.Append(new KeyValuePair<string, Microsoft.Extensions.Primitives.StringValues>("Location", Directory.GetCurrentDirectory().ToString()));
+                //          ctx.Context.Response.Headers.Append(
+                //              new KeyValuePair<string, Microsoft.Extensions.Primitives.StringValues>
+                //              ("Location", "max-age="));
+                //      }
             });
 
             app.UseMvc(routes =>
