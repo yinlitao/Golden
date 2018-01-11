@@ -42,8 +42,8 @@ namespace Web
 
             app.UseStaticFiles(new StaticFileOptions()
             {
-                FileProvider = new PhysicalFileProvider(
-                    Path.Combine(Directory.GetCurrentDirectory(), @"/wwwroot"))
+                FileProvider = new PhysicalFileProvider(@"/var/www/netcore/wwwrot")
+                    //Path.Combine(Directory.GetCurrentDirectory(), @"/wwwroot"))
                 //RequestPath = new PathString("/")
                 //OnPrepareResponse = ctx =>
                 //      {
