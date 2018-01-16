@@ -6,8 +6,4 @@
     <RuntimeIdentifiers>win10-x64;osx.10.11-x64;linuxmint.17-x64</RuntimeIdentifiers>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Library\Library.csproj" />
-  </ItemGroup>
-
 </Project>
