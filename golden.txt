@@ -23,3 +23,6 @@ Global
 		SolutionGuid = {4DF2034F-A197-4872-A7C8-468CE5F5C7B9}
 	EndGlobalSection
 EndGlobal
+
+line1
+feature1 
